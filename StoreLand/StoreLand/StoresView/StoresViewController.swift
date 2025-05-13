@@ -38,11 +38,11 @@ class StoresViewController: UIViewController,UICollectionViewDataSource,UICollec
             switch language
             {
             case "ar":
-                fetchedStores = try await clsStores.getAllStoresByCategoryNameAr(categoryNameAr: categoryName)
+                fetchedStores = try await clsStore.getAllStoresByCategoryNameAr(categoryNameAr: categoryName)
             case "en":
-                fetchedStores = try await clsStores.getAllStoresByCategoryNameEn(categoryNameEn: categoryName)
+                fetchedStores = try await clsStore.getAllStoresByCategoryNameEn(categoryNameEn: categoryName)
             default:
-                fetchedStores = try await clsStores.getAllStoresByCategoryNameEn(categoryNameEn: categoryName)
+                fetchedStores = try await clsStore.getAllStoresByCategoryNameEn(categoryNameEn: categoryName)
             }
 
             DispatchQueue.main.async

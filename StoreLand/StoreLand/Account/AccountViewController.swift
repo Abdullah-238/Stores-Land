@@ -1,20 +1,23 @@
 import UIKit
 
+
+struct ProfileItem
+{
+    let imageName: String
+    let title: String
+    let description: String
+}
+
 class AccountViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tbvProfile: UITableView!
 
-    struct ProfileItem {
-        let imageName: String
-        let title: String
-        let description: String
-    }
-    
-    var profileData: [ProfileItem] = [
+    var profileData: [ProfileItem] =
+    [
         ProfileItem(imageName: "person.circle",
                     title: NSLocalizedString("profile_title", comment: ""),
                     description: NSLocalizedString("profile_description", comment: "")),
-        ProfileItem(imageName: "store",
+        ProfileItem(imageName: "storefront",
                     title: NSLocalizedString("my_stores_title", comment: ""),
                     description: NSLocalizedString("my_stores_description", comment: "")),
         ProfileItem(imageName: "plus.circle",
@@ -33,21 +36,23 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 
 
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         tbvProfile.delegate = self
         tbvProfile.dataSource = self
-
-      
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         return profileData.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as? AccountTableViewCell else {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileCell", for: indexPath) as? AccountTableViewCell else
+        {
             return UITableViewCell()
         }
 
@@ -57,10 +62,12 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
         let selectedItem = profileData[indexPath.row]
 
-        switch selectedItem.title {
+        switch selectedItem.title
+        {
             case NSLocalizedString("profile_title", comment: ""):
             let categoriesVC = storyboard?.instantiateViewController(identifier: "ProfileVS") as! ProfileViewController
             self.navigationController?.pushViewController(categoriesVC, animated: true)
@@ -73,8 +80,8 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
                 print("Navigating to My Stores...") // Replace with actual navigation or logic
 
             case NSLocalizedString("add_store_title", comment: ""):
-                // Perform action for Add Store
-                print("Navigating to Add Store...") // Replace with actual navigation or logic
+            let NewStoreVc = storyboard?.instantiateViewController(identifier: "NewStoreVc") as! NewStoreViewController
+            self.navigationController?.pushViewController(NewStoreVc, animated: true)
 
             case NSLocalizedString("saved_stores_title", comment: ""):
                 // Perform action for Saved Stores
