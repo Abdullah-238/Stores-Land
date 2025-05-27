@@ -1,10 +1,21 @@
 import UIKit
 
 
+enum enSettings {
+    case profile
+    case myStores
+    case addStore
+    case savedStores
+    case settings
+    case logout
+}
+
+
 struct ProfileItem
 {
     let imageName: String
     let title: String
+    let esetting : enSettings?
     let description: String
 }
 
@@ -12,38 +23,83 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBOutlet weak var tbvProfile: UITableView!
 
-    var profileData: [ProfileItem] =
-    [
-        ProfileItem(imageName: "person.circle",
-                    title: NSLocalizedString("profile_title", comment: ""),
-                    description: NSLocalizedString("profile_description", comment: "")),
-        ProfileItem(imageName: "storefront",
-                    title: NSLocalizedString("my_stores_title", comment: ""),
-                    description: NSLocalizedString("my_stores_description", comment: "")),
-        ProfileItem(imageName: "plus.circle",
-                    title: NSLocalizedString("add_store_title", comment: ""),
-                    description: NSLocalizedString("add_store_description", comment: "")),
-        ProfileItem(imageName: "bookmark",
-                    title: NSLocalizedString("saved_stores_title", comment: ""),
-                    description: NSLocalizedString("saved_stores_description", comment: "")),
-        ProfileItem(imageName: "gear",
-                    title: NSLocalizedString("settings_title", comment: ""),
-                    description: NSLocalizedString("settings_description", comment: "")),
-        ProfileItem(imageName: "arrow.right.circle",
-                    title: NSLocalizedString("logout_title", comment: ""),
-                    description: NSLocalizedString("logout_description", comment: ""))
-    ]
+    var profileData: [ProfileItem] = []
 
+    var logoutTitle: String = ""
+    var logoutImageName: String = ""
+    var logoutDescription: String = ""
 
-    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        Load()
+    }
 
+    func checkSignIn()
+    {
+        if clsGlobal.person == nil
+        {
+            logoutTitle       = NSLocalizedString("login_title",       comment: "Title shown when user is not logged in")
+            logoutImageName   = "person.crop.circle.badge.questionmark"
+            logoutDescription = NSLocalizedString("login_description", comment: "Description for the login option")
+        }
+        else
+        {
+            logoutTitle       = NSLocalizedString("logout_title",       comment: "Title shown when user is logged in")
+            logoutImageName   = "arrow.right.circle"
+            logoutDescription = NSLocalizedString("logout_description", comment: "Description for the logout option")
+        }
+    }
+
+
+    func Load()
+    {
+        
+        checkSignIn()
+        
+        profileData = [
+            ProfileItem(
+                imageName: "person.circle",
+                title: NSLocalizedString("profile_title", comment: ""),
+                esetting: .profile,
+                description: NSLocalizedString("profile_description", comment: "")
+            ),
+            ProfileItem(
+                imageName: "storefront",
+                title: NSLocalizedString("my_stores_title", comment: ""),
+                esetting: .myStores,
+                description: NSLocalizedString("my_stores_description", comment: "")
+            ),
+            ProfileItem(
+                imageName: "plus.circle",
+                title: NSLocalizedString("add_store_title", comment: ""),
+                esetting: .addStore,
+                description: NSLocalizedString("add_store_description", comment: "")
+            ),
+            ProfileItem(
+                imageName: "bookmark",
+                title: NSLocalizedString("saved_stores_title", comment: ""),
+                esetting: .savedStores,
+                description: NSLocalizedString("saved_stores_description", comment: "")
+            ),
+            ProfileItem(
+                imageName: "gear",
+                title: NSLocalizedString("settings_title", comment: ""),
+                esetting: .settings,
+                description: NSLocalizedString("settings_description", comment: "")
+            ),
+            ProfileItem(
+                imageName: logoutImageName,
+                title: logoutTitle,
+                esetting: .logout,
+                description: logoutDescription
+            )
+        ]
+        
         tbvProfile.delegate = self
         tbvProfile.dataSource = self
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return profileData.count
@@ -61,50 +117,150 @@ class AccountViewController: UIViewController, UITableViewDelegate, UITableViewD
 
         return cell
     }
-
+    
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         let selectedItem = profileData[indexPath.row]
 
-        switch selectedItem.title
+        switch selectedItem.esetting
         {
-            case NSLocalizedString("profile_title", comment: ""):
-            let categoriesVC = storyboard?.instantiateViewController(identifier: "ProfileVS") as! ProfileViewController
-            self.navigationController?.pushViewController(categoriesVC, animated: true)
-
-            case NSLocalizedString("logout_title", comment: ""):
-            print("Navigating to My Stores...") // Replace with actual navigation or logic
-
-            case NSLocalizedString("my_stores_title", comment: ""):
-                // Perform action for My Stores
-                print("Navigating to My Stores...") // Replace with actual navigation or logic
-
-            case NSLocalizedString("add_store_title", comment: ""):
-            let NewStoreVc = storyboard?.instantiateViewController(identifier: "NewStoreVc") as! NewStoreViewController
-            self.navigationController?.pushViewController(NewStoreVc, animated: true)
-
-            case NSLocalizedString("saved_stores_title", comment: ""):
-                // Perform action for Saved Stores
-                print("Navigating to Saved Stores...") // Replace with actual navigation or logic
-
-            case NSLocalizedString("settings_title", comment: ""):
-           
-               
-            clsGlobal.person = nil
-           
-            let categoriesVC = storyboard?.instantiateViewController(identifier: "SignInVS") as! SignInViewController
+        case .profile:
+            Profile()
+            break;
             
-            self.navigationController?.popToViewController(categoriesVC, animated: true)
-
+        case .logout:
+            LogOut()
+            break;
             
-            case "":
-                // Handle case for empty title
-                print("Selected item has an empty title. No action taken.") // Log the empty case or perform any other action
-
-            default:
-                // Default case for unrecognized titles
-                print("Selected an unknown item.") // Handle unknown cases, if needed
+        case .myStores:
+            MyStores()
+            break;
+            
+        case .addStore:
+            AddStore()
+            break;
+            
+        case .savedStores:
+            SavedStores()
+            break;
+            
+        case .settings:
+            print("Navigating to Settings...")
+            break;
+            
+        case .none:
+            print("Navigating to Settings...")
+            break;
+            
         }
+
+    }
+    
+    
+    func SavedStores()
+    {
+        if clsGlobal.person == nil
+        {
+            let alert = UIAlertController(
+                title: NSLocalizedString("not_signed_in_title", comment: "Alert title when the user is not signed in"), message: NSLocalizedString("not_signed_in_message", comment: "Alert message when the user tries to access a feature while not signed in"),
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK button title"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            let newStoreVC = storyboard?.instantiateViewController(identifier: "SavedStoreVc") as! SavedStoresViewController
+            self.navigationController?.pushViewController(newStoreVC, animated: true)
+        }
+        
     }
 
+    
+    func AddStore()
+    {
+        if clsGlobal.person == nil
+        {
+            let alert = UIAlertController(
+                title: NSLocalizedString("not_signed_in_title", comment: "Alert title when the user is not signed in"), message: NSLocalizedString("not_signed_in_message", comment: "Alert message when the user tries to access a feature while not signed in"),
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK button title"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            let newStoreVC = storyboard?.instantiateViewController(identifier: "NewStoreVc") as! NewStoreViewController
+            self.navigationController?.pushViewController(newStoreVC, animated: true)
+        }
+        
+      
+    }
+    
+
+    func Profile()
+    {
+        if clsGlobal.person == nil
+        {
+            let alert = UIAlertController(
+                title: NSLocalizedString("not_signed_in_title", comment: "Alert title when the user is not signed in"),
+                message: NSLocalizedString("not_signed_in_message", comment: "Alert message when the user tries to access a feature while not signed in"),
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK button title"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let profileVC = storyboard?.instantiateViewController(identifier: "ProfileVC") as! ProfileViewController
+            self.navigationController?.pushViewController(profileVC, animated: true)
+        }
+        
+    }
+    
+    
+    func LogOut()
+    {
+        clsGlobal.person = nil
+        clsGlobal.PersonId = nil
+        UserDefaults.standard.removeObject(forKey:  "LoggingInPersonID")
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let sceneDelegate = windowScene.delegate as? UIWindowSceneDelegate,
+              let window = sceneDelegate.window ?? nil
+        {
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let signOptionVC = storyboard.instantiateViewController(withIdentifier: "SignOptionVC")
+            
+            window.rootViewController = UINavigationController(rootViewController: signOptionVC)
+            window.makeKeyAndVisible()
+        }
+    }
+    
+    
+    func MyStores()
+    {
+        if clsGlobal.person == nil
+        {
+            let alert = UIAlertController(
+                title: NSLocalizedString("not_signed_in_title", comment: "Alert title when the user is not signed in"), message: NSLocalizedString("not_signed_in_message", comment: "Alert message when the user tries to access a feature while not signed in"),
+                preferredStyle: .alert
+            )
+            
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "OK button title"), style: .default))
+            self.present(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            let newStoreVC = storyboard?.instantiateViewController(identifier: "MyStoresVC") as! MyStoresViewController
+            self.navigationController?.pushViewController(newStoreVC, animated: true)
+        }
+        
+      
+    }
+    
 }

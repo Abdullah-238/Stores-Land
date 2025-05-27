@@ -49,6 +49,40 @@
         }
       }
     },
+    "camera" : {
+      "comment" : "Camera option",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكاميرا"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Camera"
+          }
+        }
+      }
+    },
+    "cancel" : {
+      "comment" : "Cancel button",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلغاء"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
+    },
     "contact_support" : {
       "localizations" : {
         "ar" : {
@@ -129,22 +163,139 @@
         }
       }
     },
+    "error_title" : {
+      "comment" : "Error alert title",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خطأ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error"
+          }
+        }
+      }
+    },
     "invalid_credentials" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بيانات الاعتماد غير صالحة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid credentials"
+          }
+        }
+      }
     },
     "invalid_email_format" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنسيق البريد الإلكتروني غير صالح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid email format"
+          }
+        }
+      }
     },
     "invalid_phone_number_format" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنسيق رقم الهاتف غير صالح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid phone number format"
+          }
+        }
+      }
+    },
+    "login_description" : {
+      "comment" : "Description for the login option",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تسجيل الدخول إلى الحساب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in to your account"
+          }
+        }
+      }
     },
     "login_error" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدث خطأ أثناء تسجيل الدخول"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred during login"
+          }
+        }
+      }
     },
     "login_failed" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل تسجيل الدخول"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login failed"
+          }
+        }
+      }
+    },
+    "login_title" : {
+      "comment" : "Title shown when user is not logged in",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تسجيل الدخول"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        }
+      }
     },
     "logout_description" : {
+      "comment" : "Description for the logout option",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -161,6 +312,7 @@
       }
     },
     "logout_title" : {
+      "comment" : "Title shown when user is logged in",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -177,7 +329,54 @@
       }
     },
     "missing_fields" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حقول ناقصة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing fields"
+          }
+        }
+      }
+    },
+    "missing_fields_message" : {
+      "comment" : "Alert message for missing fields",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى تعبئة جميع الحقول المطلوبة."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please fill in all required fields."
+          }
+        }
+      }
+    },
+    "missing_fields_title" : {
+      "comment" : "Alert title for missing fields",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بيانات ناقصة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Missing Fields"
+          }
+        }
+      }
     },
     "my_stores_description" : {
       "localizations" : {
@@ -211,14 +410,105 @@
         }
       }
     },
+    "not_signed_in_message" : {
+      "comment" : "Alert message when the user tries to access a feature while not signed in",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "يرجى تسجيل الدخول لإضافة متجر جديد"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please sign in to add a new store"
+          }
+        }
+      }
+    },
+    "not_signed_in_title" : {
+      "comment" : "Alert title when the user is not signed in",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لم تقم بتسجيل الدخول"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Signed In"
+          }
+        }
+      }
+    },
     "ok" : {
-
+      "comment" : "OK button title",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "موافق"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "password_mismatch" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كلمتا المرور غير متطابقتين"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passwords do not match"
+          }
+        }
+      }
     },
     "phone_exists" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رقم الهاتف مستخدم بالفعل"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone number already in use"
+          }
+        }
+      }
+    },
+    "photo_library" : {
+      "comment" : "Photo Library option",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معرض الصور"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Photo Library"
+          }
+        }
+      }
     },
     "profile_description" : {
       "localizations" : {
@@ -317,10 +607,121 @@
       }
     },
     "signup_error" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حدث خطأ أثناء إنشاء الحساب"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error occurred during sign up"
+          }
+        }
+      }
+    },
+    "store_created_message" : {
+      "comment" : "Success message when store is created",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم إنشاء المتجر بنجاح."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Store created successfully."
+          }
+        }
+      }
+    },
+    "store_creation_failed" : {
+      "comment" : "Error message when store creation fails",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فشل في إنشاء المتجر."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Failed to create store."
+          }
+        }
+      }
+    },
+    "success_title" : {
+      "comment" : "Success alert title",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم بنجاح"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Success"
+          }
+        }
+      }
+    },
+    "Update" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحديث"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Update rating"
+          }
+        }
+      }
+    },
+    "upload_image_title" : {
+      "comment" : "Upload Image title",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تحميل صورة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Upload Image"
+          }
+        }
+      }
     },
     "weak_password" : {
-
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كلمة المرور ضعيفة"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak password"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

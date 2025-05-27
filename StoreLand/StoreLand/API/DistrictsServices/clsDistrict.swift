@@ -1,16 +1,17 @@
 import Foundation
 
 public struct DistrictDTO: Codable {
-    public var DistrictsID: Int?
-    public var CityID: Int?
-    public var DistrictsNameAr: String
-    public var DistrictsNameEn: String
+    var districtsID: Int?
+       var cityID: Int?
+       var districtsNameAr: String
+       var districtsNameEn: String
+
     
     init(DistrictsID: Int?, CityID: Int?, DistrictsNameAr: String, DistrictsNameEn: String) {
-        self.DistrictsID = DistrictsID
-        self.CityID = CityID
-        self.DistrictsNameAr = DistrictsNameAr
-        self.DistrictsNameEn = DistrictsNameEn
+        self.districtsID = DistrictsID
+        self.cityID = CityID
+        self.districtsNameAr = DistrictsNameAr
+        self.districtsNameEn = DistrictsNameEn
     }
 }
 

@@ -1,14 +1,14 @@
 import Foundation
 
 public struct TypeDTO: Codable {
-    public var TypeID: Int?
-    public var TypeNameAr: String?
-    public var TypeNameEn: String?
+    public var typeID: Int?
+    public var typeNameAr: String?
+    public var typeNameEn: String?
 
     public init(TypeID: Int?, TypeNameAr: String?, TypeNameEn: String?) {
-        self.TypeID = TypeID
-        self.TypeNameAr = TypeNameAr
-        self.TypeNameEn = TypeNameEn
+        self.typeID = TypeID
+        self.typeNameAr = TypeNameAr
+        self.typeNameEn = TypeNameEn
     }
 }
 

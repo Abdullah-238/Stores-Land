@@ -1,10 +1,15 @@
-
+//
+//  MyStoresCollectionViewCell.swift
+//  StoreLand
+//
+//  Created by Abdullah on 25/11/1446 AH.
+//
 
 import UIKit
 
-class StoresCollectionViewCell: UICollectionViewCell
-{
-    
+class MyStoresCollectionViewCell: UICollectionViewCell {
+
+    @IBOutlet weak var lblIsActive: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var imgStore: UIImageView!
     
@@ -18,7 +23,7 @@ class StoresCollectionViewCell: UICollectionViewCell
         self.layer.cornerRadius = 4
         self.layer.masksToBounds = true
     }
-    public func SetCell(name: String, location: String, rating: String, image: String?)
+    public func SetCell(name: String, location: String, rating: String, image: String?, IsActive : String?)
     {
         
         setupAppearance()
@@ -26,7 +31,9 @@ class StoresCollectionViewCell: UICollectionViewCell
         lblName.text = name
         lblLocation.text = location
         lblStar.text = rating
-        clsUtil.loadImage(into: self.imgStore, from: image)
+        lblIsActive.text = IsActive
+        
+        clsUtil.loadImage(into: imgStore, from: image)
         
     }
 

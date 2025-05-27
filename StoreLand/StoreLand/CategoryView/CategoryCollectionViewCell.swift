@@ -9,12 +9,13 @@ class CategoryCollectionViewCell: UICollectionViewCell {
     private func setupAppearance()
     {
         self.layer.borderWidth = 1
-        self.layer.borderColor = UIColor.red.cgColor
+        self.layer.borderColor = UIColor.lightGray.cgColor
         self.layer.cornerRadius = 4
-       // self.layer.masksToBounds = true
+        self.layer.masksToBounds = true
+
     }
     
-    public func setData(_ data: String)
+    public func setData( data: String)
     {
         setupAppearance()
         

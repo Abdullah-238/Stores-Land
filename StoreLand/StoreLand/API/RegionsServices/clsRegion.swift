@@ -1,21 +1,19 @@
 import Foundation
 
-public struct RegionDTO : Codable
-{
-    public var RegionID  : Int
-    public var Code  : String
-    public var RegionNameAr  : String
-    public var RegionNameEn  : String
-    
-    
-    init(RegionID: Int, Code: String, RegionNameAr: String, RegionNameEn: String)
-    {
-        self.RegionID = RegionID
-        self.Code = Code
-        self.RegionNameAr = RegionNameAr
-        self.RegionNameEn = RegionNameEn
+public struct RegionDTO: Codable {
+    var regionID: Int?
+    var code: String
+    var regionNameAr: String
+    var regionNameEn: String
+
+    init(regionID: Int?, code: String, regionNameAr: String, regionNameEn: String) {
+        self.regionID = regionID
+        self.code = code
+        self.regionNameAr = regionNameAr
+        self.regionNameEn = regionNameEn
     }
 }
+
 
 
        

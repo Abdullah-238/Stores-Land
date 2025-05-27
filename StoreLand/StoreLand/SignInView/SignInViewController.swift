@@ -8,12 +8,10 @@ class SignInViewController: UIViewController
 
     override func viewDidLoad()
     {
-        
         super.viewDidLoad()
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
               self.view.addGestureRecognizer(tapGestureRecognizer)
-              
     }
 
     @IBAction func btnSignIn(_ sender: Any)
@@ -43,6 +41,9 @@ class SignInViewController: UIViewController
                     if person.isActive
                     {
                         clsGlobal.person = person
+                        clsGlobal.PersonId = person.personID
+
+                        UserDefaults.standard.set(person.personID, forKey: "LoggingInPersonID")
 
                         let categoriesVC = storyboard?.instantiateViewController(identifier: "HomeVs") as! HomeTabbedViewController
                         categoriesVC.modalPresentationStyle = .fullScreen
@@ -68,6 +69,8 @@ class SignInViewController: UIViewController
             }
         }
     }
+    
+    
     @objc func dismissKeyboard()
     {
         self.view.endEditing(true)

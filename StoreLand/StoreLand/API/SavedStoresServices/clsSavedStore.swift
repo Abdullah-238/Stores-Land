@@ -1,6 +1,7 @@
 import Foundation
 
-public struct SavedStoreDTO: Codable {
+public struct SavedStoreDTO: Codable
+{
     public var StoreSavedId: Int?
     public var StoreID: Int?
     public var PersonID: Int?
@@ -14,9 +15,11 @@ public struct SavedStoreDTO: Codable {
 
 
 public class clsSavedStore {
+    
     private static let baseURL = URL(string: "https://storesland.com/api/api/SavedStores/")!
 
-    public static func AddSavedStore(_ dto: SavedStoreDTO) async throws -> SavedStoreDTO {
+    public static func AddSavedStore(_ dto: SavedStoreDTO) async throws -> SavedStoreDTO
+    {
         let url = baseURL.appendingPathComponent("AddSavedStore")
         var request = URLRequest(url: url)
         request.httpMethod = "POST"

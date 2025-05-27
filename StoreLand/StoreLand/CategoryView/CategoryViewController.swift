@@ -12,10 +12,13 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
         clvCategories.dataSource = self
         clvCategories.delegate = self
 
+        
         Task
         {
             await fetchCategories()
         }
+        
+      
     }
 
     private func fetchCategories() async
@@ -62,7 +65,7 @@ class CategoryViewController: UIViewController, UICollectionViewDataSource, UICo
                 
         let category = categories[indexPath.row]
         
-        cell.lblTitle.text = category
+        cell.setData(data: category)
         
         return cell
     }

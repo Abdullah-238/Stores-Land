@@ -12,14 +12,18 @@ import UIKit
 class ViewController: UIViewController
 {
    
-   
+    @IBOutlet weak var vwOnline: UIView!
+
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        
     }
     
    
+    
+    
     @IBAction func btnFamilesStores(_ sender: Any)
     {
          let categoriesVC = storyboard?.instantiateViewController(identifier: "categoriesVC") as! CategoryViewController
@@ -31,6 +35,9 @@ class ViewController: UIViewController
         navigationController?.pushViewController(categoriesVC, animated: true)
         
     }
+    
+    
+  
     
     @IBAction func btnOnlineStores(_ sender: Any)
     {

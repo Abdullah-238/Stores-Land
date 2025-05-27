@@ -1,13 +1,15 @@
 import UIKit
 
-class ProfileViewController: UIViewController, UITextFieldDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate
+{
     
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
     @IBOutlet weak var txtName: UITextField!
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         if let person = clsGlobal.person
@@ -23,7 +25,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         txtPhone.delegate = self
     }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
+    {
         let maxPasswordLength = 20, maxEmailLength = 50, maxPhoneLength = 9
         
         guard let currentText = textField.text as NSString? else { return true }
@@ -39,7 +42,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    @IBAction func btnUpdateProfile(_ sender: Any) {
+    @IBAction func btnUpdateProfile(_ sender: Any)
+    {
         guard let name = txtName.text, !name.isEmpty,
               let email = txtEmail.text, !email.isEmpty,
               let phone = txtPhone.text, !phone.isEmpty,

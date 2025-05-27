@@ -15,7 +15,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         self.view.addGestureRecognizer(tapGestureRecognizer)
         
-        
         txtPass.delegate = self
         txtReTypePassword.delegate = self
         txtEmail.delegate = self
@@ -80,17 +79,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         guard clsUtil.isValidPassword(password) else
         {
-            clsAlertHelper.showAlert(from: self,
-                                     title: NSLocalizedString("error", comment: ""),
-                                     message: NSLocalizedString("weak_password", comment: ""))
+            clsAlertHelper.showAlert(from: self, title: NSLocalizedString("error", comment: ""), message: NSLocalizedString("weak_password", comment: ""))
             return
         }
         
         guard password == confirmPassword else
         {
-            clsAlertHelper.showAlert(from: self,
-                                     title: NSLocalizedString("error", comment: ""),
-                                     message: NSLocalizedString("password_mismatch", comment: ""))
+            clsAlertHelper.showAlert(from: self, title: NSLocalizedString("error", comment: ""), message: NSLocalizedString("password_mismatch", comment: ""))
             return
         }
         
@@ -101,8 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 let emailExists = try await clsPerson.isPersonExistsByEmail(email)
                 if emailExists
                 {
-                    clsAlertHelper.showAlert(from: self, title: NSLocalizedString("error", comment: ""),
-                                             message: NSLocalizedString("email_exists", comment: ""))
+                    clsAlertHelper.showAlert(from: self, title: NSLocalizedString("error", comment: ""), message: NSLocalizedString("email_exists", comment: ""))
                     return
                 }
                 
@@ -119,6 +113,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 if let person = try await clsPerson.addPerson(newPerson)
                 {
                     clsGlobal.person = person
+                    clsGlobal.PersonId = person.personID
+                    
+                    UserDefaults.standard.set(person.personID, forKey: "LoggingInPersonID")
                     
                     let categoriesVC = storyboard?.instantiateViewController(identifier: "HomeVs") as! HomeTabbedViewController
                     categoriesVC.modalPresentationStyle = .fullScreen
@@ -127,9 +124,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 }
                 else
                 {
-                    clsAlertHelper.showAlert(from: self,
-                                             title: NSLocalizedString("error", comment: ""),
-                                             message: NSLocalizedString("signup_error", comment: ""))
+                    clsAlertHelper.showAlert(from: self, title: NSLocalizedString("error", comment: ""), message: NSLocalizedString("signup_error", comment: ""))
                 }
                 
             }

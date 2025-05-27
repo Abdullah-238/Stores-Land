@@ -1,18 +1,18 @@
 import Foundation
 
 public struct RateDTO: Codable {
-    public var RateID: Int?
-    public var StoreID: Int?
-    public var Comment: String
-    public var Rate: UInt8?
-    public var PersonID: Int?
+    public var rateID: Int?
+    public var storeID: Int?
+    public var comment: String
+    public var rate: UInt8?
+    public var personID: Int?
 
     public init(RateID: Int?, StoreID: Int?, Comment: String, Rate: UInt8?, PersonID: Int?) {
-        self.RateID = RateID
-        self.StoreID = StoreID
-        self.Comment = Comment
-        self.Rate = Rate
-        self.PersonID = PersonID
+        self.rateID = RateID
+        self.storeID = StoreID
+        self.comment = Comment
+        self.rate = Rate
+        self.personID = PersonID
     }
 }
 
@@ -34,12 +34,24 @@ public class clsRate {
         let url = baseURL.appendingPathComponent("UpdateRate/\(rateID)")
         var request = URLRequest(url: url)
         request.httpMethod = "PUT"
-        request.httpBody = try JSONEncoder().encode(rate)
+        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase // اختياري حسب السيرفر
+        request.httpBody = try encoder.encode(rate)
+        
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        let (_, response) = try await URLSession.shared.data(for: request)
-        return (response as? HTTPURLResponse)?.statusCode == 200
+        let (data, response) = try await URLSession.shared.data(for: request)
+
+        if let httpResponse = response as? HTTPURLResponse {
+            print("Response status code: \(httpResponse.statusCode)")
+            print("Response body: \(String(data: data, encoding: .utf8) ?? "N/A")")
+            return httpResponse.statusCode == 200
+        }
+
+        return false
     }
+
 
     public static func DeleteRate(rateID: Int) async throws -> Bool {
         let url = baseURL.appendingPathComponent("DeleteRate/\(rateID)")

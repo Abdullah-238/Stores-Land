@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-struct CategoryDTO: Codable
+public struct CategoryDTO: Codable
 {
     var categoryID: Int?
     var categoryNameAr: String
@@ -23,9 +23,20 @@ public class clsCategory
 
     private init() {}
 
+    static func getAllCategories() async throws -> [CategoryDTO]
+   {
+       let url = baseURL.appendingPathComponent("GetAllCategories")
+
+       let (data, _) = try await URLSession.shared.data(from: url)
+
+       let categories = try JSONDecoder().decode([CategoryDTO].self, from: data)
+       
+       return categories
+   }
+    
      static func getAllCategoriesAr() async throws -> [CategoryDTO]
     {
-        let url = baseURL.appendingPathComponent("Category/GetAllCategoryAvailableByNameAr/\(clsGlobal.typeID)")
+        let url = baseURL.appendingPathComponent("GetAllCategoryAvailableByNameAr/\(clsGlobal.typeID)")
 
         let (data, _) = try await URLSession.shared.data(from: url)
 
@@ -33,6 +44,17 @@ public class clsCategory
         
         return categories
     }
+    
+    static func getAllCategoriesEn() async throws -> [CategoryDTO]
+   {
+       let url = baseURL.appendingPathComponent("GetAllCategoryAvailableByNameEn/\(clsGlobal.typeID)")
+
+       let (data, _) = try await URLSession.shared.data(from: url)
+
+       let categories = try JSONDecoder().decode([CategoryDTO].self, from: data)
+       
+       return categories
+   }
     
     static func GetAllCategoryAvailableByNameAr() async throws -> [String]
     {
